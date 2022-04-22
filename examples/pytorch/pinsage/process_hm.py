@@ -32,7 +32,7 @@ if __name__ == '__main__':
     # parser.add_argument('output_path', type=str)
     # args = parser.parse_args()
     # directory = args.directory
-    output_path = "data/derived/dataset.pkl" #args.output_path
+    output_path = "dataset.pkl" #args.output_path
 
     ## Build heterogeneous graph
 
@@ -114,10 +114,10 @@ if __name__ == '__main__':
     # g.edges['watched-by'].data['rating'] = torch.LongTensor(ratings['rating'].values)
     # g.edges['watched-by'].data['timestamp'] = torch.LongTensor(ratings['timestamp'].values)
     print("| Loading Graph...")
-    g = torch.load("data/derived/graph.pt")
+    g = torch.load("graph.pt")
     
     print("| Loading Transactions...")
-    transactions = pd.read_parquet("data/original/transactions_train.parquet")[:int(g.num_edges()/2)]
+    transactions = pd.read_parquet("transactions_train.parquet")[:int(g.num_edges()/2)]
     
     g.edges['buys'].data['timestamp'] = torch.LongTensor(pd.DatetimeIndex(transactions['t_dat']).asi8)
     g.edges['rev_buys'].data['timestamp'] = torch.LongTensor(pd.DatetimeIndex(transactions['t_dat']).asi8)
