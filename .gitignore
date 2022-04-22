@@ -164,3 +164,11 @@ config.cmake
 
 # model file
 *.pth
+
+examples/pytorch/pinsage/data/derived/
+
+examples/pytorch/pinsage/data/original/
+
+examples/pytorch/pinsage/ml-1m/
+
+examples/pytorch/pinsage/data.pkl
